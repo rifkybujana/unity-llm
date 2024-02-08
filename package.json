@@ -1,0 +1,12 @@
+{
+  "name": "com.gentatechnology.llm",
+  "version": "0.0.1",
+  "displayName": "Unity Large Language Model (LLM) SDK",
+  "description": "This is an SDK for Unity that integrates and runs Large Language Models (LLM) using TensorRT, enabling advanced AI capabilities in game development.",
+  "keywords": ["AI", "LLM", "SDK", "TensorRT"],
+  "author": {
+     "name": "Rifky Bujana Bisri & Althaaf Syaikha Nuhaad",
+     "email": "rifky@genta.tech, a",
+     "url": "https://genta.tech/"
+  }
+}
