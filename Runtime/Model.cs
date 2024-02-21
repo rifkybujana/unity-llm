@@ -76,6 +76,14 @@ namespace gentatechnology.llm
         }
 
         /// <summary>
+        /// Unload the model
+        /// </summary>
+        public void Unload()
+        {
+
+        }
+
+        /// <summary>
         /// Generates a text based on the provided prompt using the model. The generated text will have a length between the specified minimum length and maximum tokens. 
         /// The temperature, topP, and topK parameters control the randomness and diversity of the generated text.
         /// </summary>
