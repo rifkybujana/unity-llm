@@ -51,6 +51,9 @@ namespace gentatechnology.llm.Editor
             GUILayout.EndVertical();
         }
 
+        /// <summary>
+        /// Renders the LLM Model Configuration form
+        /// </summary>
         private void RenderLLMModelConfigurationForm()
         {
             GUILayout.Label("LLM Model Configuration", EditorStyles.boldLabel);
@@ -59,6 +62,9 @@ namespace gentatechnology.llm.Editor
             AddField("Local Path", ref localPath, "If using localpath, Huggingface ID will be ignored", "Assets/Models/meta-llama/Llama-2-7b-chat-hf/");
         }
 
+        /// <summary>
+        /// Renders the Build Configuration form
+        /// </summary>
         private void RenderBuildConfigurationForm()
         {
             GUILayout.Label("Build Configuration", EditorStyles.boldLabel);
@@ -76,6 +82,9 @@ namespace gentatechnology.llm.Editor
             AddField("Paged KV Cache", ref buildConfig.pagedKvCache, "Paged KV Cache", true);
         }
 
+        /// <summary>
+        /// Renders the Quantization Configuration form
+        /// </summary>
         private void RenderQuantizationConfigurationForm()
         {
             GUILayout.Label("Quantization Configuration", EditorStyles.boldLabel);
@@ -85,6 +94,16 @@ namespace gentatechnology.llm.Editor
             AddField("Language", ref quantizationConfig.lang, "Language", "id");
         }
 
+        /// <summary>
+        /// Adds a field to the form with a specified label, value, tooltip, and default value. 
+        /// The method supports string, bool, and int types. If the value is null or equals the default value, 
+        /// it will be set to the provided default value. The method also handles the layout of the field in the form.
+        /// </summary>
+        /// <typeparam name="T">The type of the value. Supported types are string, bool, and int.</typeparam>
+        /// <param name="label">The label of the field.</param>
+        /// <param name="value">The value of the field. If null or equals the default value, it will be set to the provided default value.</param>
+        /// <param name="tooltip">The tooltip that appears when the mouse hovers over the label of the field. Default is an empty string.</param>
+        /// <param name="defaultValue">The default value of the field. If the value is null or equals the default value, it will be set to this value. Default is the default value of type T.</param>
         private void AddField<T>(string label, ref T value, string tooltip = "", T defaultValue = default(T))
         {
             if ((value == null || value.Equals(default(T))) && typeof(T) != typeof(bool))
