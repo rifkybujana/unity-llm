@@ -1,3 +1,16 @@
 {
-	"name": "com.gentatechnology.llm"
+    "name": "com.gentatechnology.llm",
+    "rootNamespace": "",
+    "references": [
+        "GUID:521bd3a0111b24a4fbcfde4543391f9e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

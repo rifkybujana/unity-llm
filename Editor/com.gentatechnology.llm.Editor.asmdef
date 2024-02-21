@@ -1,3 +1,17 @@
 {
-	"name": "com.gentatechnology.llm.Editor"
+    "name": "com.gentatechnology.llm.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:dce3334c15ec2e74cbf8b50705b573bc",
+        "GUID:521bd3a0111b24a4fbcfde4543391f9e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
