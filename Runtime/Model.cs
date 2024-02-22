@@ -1,5 +1,7 @@
 using gentatechnology.llm.Configs;
 using UnityEngine;
+using System;
+using System.Threading;
 
 namespace gentatechnology.llm
 {
@@ -8,7 +10,6 @@ namespace gentatechnology.llm
     {
         public string modelName { get; private set; }
         public string author { get; private set; }
-        public string id { get; private set; }
 
         private BuildConfig buildConfig;
         private QuantizationConfig quantizationConfig;
@@ -16,24 +17,62 @@ namespace gentatechnology.llm
         private string localPath;
 
         /// <summary>
-        /// Initializes a new instance of the Model class with the specified name, author, id, build configuration, and quantization configuration.
+        /// Initializes a new instance of the Model class with the specified name, author, build configuration, and quantization configuration.
         /// </summary>
         /// <param name="name">The name of the model.</param>
         /// <param name="author">The author of the model.</param>
-        /// <param name="id">The unique identifier of the model.</param>
         /// <param name="buildConfig">The build configuration for the model.</param>
         /// <param name="quantizationConfig">The quantization configuration for the model.</param>
         public Model(
-            string name, string author, string id, 
+            string name, string author,
             BuildConfig buildConfig, QuantizationConfig quantizationConfig
         )
         {
             // TODO: download model from huggingface to a temporary directory
+            Thread downloadThread = new Thread(DownloadModel);
+            downloadThread.start();
+
             // TODO: validate if the model is downloaded successfully
+
+
             // TODO: compile the model into tensorrt engine
+
+
             // TODO: validate if the model is compiled successfully
 
+
             // stub
+        }
+
+        /// <summary>
+        /// Download a new HuggingFace Model through the terminal
+        /// </summary>
+        /// <param name="name">The name of the model.</param>
+        /// <param name="author">The author of the model.</param>
+        private void DownloadModel(string name, string author) 
+        {
+            try
+            {
+                Process process = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.RedirectStandardInput = true;  // Redirect standard input
+                startInfo.UseShellExecute = false;       // Required for redirecting standard input
+                process.StartInfo = startInfo;
+                process.Start();
+
+                // Write commands to the standard input stream of the process
+                process.StandardInput.WriteLine("mkdir ModelDir && git clone https://huggingface.co/" + author + "/" + name + " ModelDir");
+                process.StandardInput.Flush();  // Flush the standard input buffer
+                process.StandardInput.Close();  // Close the standard input stream to signal the end of input
+
+                process.WaitForExit();  // Wait for the process to exit
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+            }
         }
 
         /// <summary>
